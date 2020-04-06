@@ -6,7 +6,7 @@ before_install:
    - docker build -t bpallems/react-test -f ./client/Dockerfile.dev ./client
    
 script:
-   - docker run -e CI=true bpallems/react-test npm run test -- --coverage
+   - docker run -e CI=true bpallems/react-test npm test -- --coverage
    
 after_success:
    - docker build -t bpallems/multi-client ./client
