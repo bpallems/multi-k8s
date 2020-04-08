@@ -1,0 +1,36 @@
+{
+ "AWSEBDockerrunVersion": 2,
+ "containerDefinitions": [
+   {
+    "name": "client",
+	"image": "bhanudocker3315/multi-client",
+	"hostname": "client",
+	"essential": false
+    },
+   {
+    "name": "server",
+	"image": "bhanudocker3315/multi-server",
+	"hostname": "api",
+	"essential": false
+    },
+   {
+    "name": "worker",
+	"image": "bhanudocker3315/multi-worker",
+	"hostname": "worker",
+	"essential": false
+    },
+   {
+    "name": "nginx",
+	"image": "bhanudocker3315/multi-nginx",
+	"hostname": "nginx",
+	"essential": true,
+	"portMappings": [
+	  {
+	   "hostPort": 80,
+	   "containerPort": 80
+	   }
+	 ],
+	 "links": ["client", "server"]
+    }
+  ] 
+ }
