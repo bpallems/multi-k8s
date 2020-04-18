@@ -18,10 +18,10 @@ before_install:
   - docker build -t bhanudocker3315/react-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run bhanudocker3315/react-test npm run test -- --coverage
+  - docker run -e CI=true bhanudocker3315/react-test npm run test -- --coverage
 
 deploy:
-  provide: script
+  provider: script
   script: bash ./deploy.sh
   on:
     branch: master  
